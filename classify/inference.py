@@ -4,7 +4,7 @@ import torchvision
 import os
 import struct
 from torchsummary import summary
-from cls import names
+from cls import names, input_h, input_w
 
 modelPath = '/data1_dev/zhn/dogcat/models/epoch_40.pth'
 
@@ -23,12 +23,12 @@ def main():
     net.eval()
     print('model: ', net)
     #print('state dict: ', net.state_dict().keys())
-    tmp = torch.ones(1, 3, 224, 224).to('cuda:0')
+    tmp = torch.ones(1, 3, input_h, input_w).to('cuda:0')
     print('input: ', tmp)
     out = net(tmp)
     print('output:', out)
 
-    summary(net, (3,224,224))
+    summary(net, (3, input_h, input_w))
     #return
     f = open("/data1_dev/zhn/dogcat/models/resnet18.wts", 'w')
     f.write("{}\n".format(len(net.state_dict().keys())))
