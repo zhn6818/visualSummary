@@ -8,7 +8,7 @@ from cls import names
 
 modelPath = '/data1_dev/zhn/dogcat/models/epoch_40.pth'
 
-##test
+##testsdf
 
 
 def main():
