@@ -12,7 +12,7 @@ import time
 from PIL import Image
 from cls import names, JFDetDataset, img_path, input_h, input_w
 
-modelPath = '/data1/zhn/xianghao/modelzoo/cls_model/20210518/epoch_1980.pth'
+modelPath = '/data1_dev/zhn/dogcat/models/epoch_40.pth'
 
 if __name__ == "__main__":
     

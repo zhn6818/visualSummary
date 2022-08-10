@@ -12,6 +12,24 @@
             "console": "integratedTerminal",
             "args": [],
             "justMyCode": true
+        },
+        {
+            "name": "Python: test",
+            "type": "python",
+            "request": "launch",
+            "program": "classify/test.py",
+            "console": "integratedTerminal",
+            "args": [],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: inference",
+            "type": "python",
+            "request": "launch",
+            "program": "classify/inference.py",
+            "console": "integratedTerminal",
+            "args": [],
+            "justMyCode": true
         }
     ]
 }
