@@ -11,8 +11,9 @@ from torchvision import transforms
 import time
 from PIL import Image
 from cls import names, input_h, input_w
+from test import modelPath
 
-modelPath = '/data1/zhn/xianghao/modelzoo/cls_model/20211108/epoch_1782.pth'
+# modelPath = '/data1_dev/zhn/dogcat/models/epoch_40.pth'
 
 def convert_model(model, input_h, input_w, modelpath, savepath):
     '''

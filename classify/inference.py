@@ -34,7 +34,7 @@ def main():
     f.write("{}\n".format(len(net.state_dict().keys())))
     for k,v in net.state_dict().items():
         print('key: ', k)
-        print('value: ', v.shape)
+        # print('value: ', v.shape)
         vr = v.reshape(-1).cpu().numpy()
         f.write("{} {}".format(k, len(vr)))
         for vv in vr:
