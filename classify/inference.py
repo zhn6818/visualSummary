@@ -6,7 +6,7 @@ import struct
 from torchsummary import summary
 from cls import names, input_h, input_w
 
-modelPath = '/data1_dev/zhn/dogcat/models/epoch_40.pth'
+modelPath = '/data1_dev/zhn/dogcat/models/epoch_bias_2.pth'
 
 ##testsdf
 
@@ -17,7 +17,7 @@ def main():
     
     nclass = len(names)
     net = torchvision.models.resnet18(pretrained=True)
-    net.fc = nn.Linear(net.fc.in_features,nclass,bias=False) 
+    net.fc = nn.Linear(net.fc.in_features,nclass,bias=True) 
     net.load_state_dict(torch.load(modelPath))
     net = net.to('cuda:0')
     net.eval()
@@ -30,7 +30,7 @@ def main():
 
     summary(net, (3, input_h, input_w))
     #return
-    f = open("/data1_dev/zhn/dogcat/models/resnet18.wts", 'w')
+    f = open("/data1_dev/zhn/dogcat/models/resnet18_bias.wts", 'w')
     f.write("{}\n".format(len(net.state_dict().keys())))
     for k,v in net.state_dict().items():
         print('key: ', k)

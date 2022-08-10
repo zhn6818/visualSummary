@@ -12,7 +12,7 @@ import time
 from PIL import Image
 from cls import names, JFDetDataset, img_path, input_h, input_w
 
-modelPath = '/data1_dev/zhn/dogcat/models/epoch_40.pth'
+modelPath = '/data1_dev/zhn/dogcat/models/epoch_bias_2.pth'
 
 if __name__ == "__main__":
     
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     
     nclass = len(names)
     model = torchvision.models.resnet18(pretrained=True)
-    model.fc = nn.Linear(model.fc.in_features,nclass,bias=False) 
+    model.fc = nn.Linear(model.fc.in_features,nclass,bias=True) 
     model.load_state_dict(torch.load(modelPath))
     model.cuda()
     model.eval()
@@ -45,6 +45,9 @@ if __name__ == "__main__":
         inputs = torch.Tensor(inputs)
         inputs = inputs.unsqueeze(0).cuda()
         # inputs = Variable(inputs).cuda()
+        
+        # inputs = torch.ones(1, 3, input_h, input_w).cuda()
+        
         outputs = model(inputs)
         _, index = torch.max(outputs, 1)
         index = index.detach().cpu()

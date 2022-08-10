@@ -53,7 +53,7 @@ print(save_path)
 
 nclass = len(names)
 batch_size = 512
-max_epoches = 2000
+max_epoches = 4
 lr = 0.001
 
 
@@ -96,7 +96,7 @@ if __name__ == "__main__":
                                             shuffle=True)
 
     model = torchvision.models.resnet18(pretrained=True)
-    model.fc = nn.Linear(model.fc.in_features,nclass,bias=False) # resnet18
+    model.fc = nn.Linear(model.fc.in_features,nclass,bias=True) # resnet18
     # model.classifier[1]=nn.Linear(model.classifier[1].in_features,nclass,bias=False)  # mobilenetv2
 
     # for m in model.modules():
@@ -133,9 +133,9 @@ if __name__ == "__main__":
             loss.backward()
             optimizer.step()
             
-        if i%20 == 0:
+        if i%2 == 0:
             optimizer.param_groups[0]['lr']=optimizer.param_groups[0]['lr']*0.2
 
-            torch.save(model.state_dict(),save_path+"/epoch_"+str(i)+".pth")
+            torch.save(model.state_dict(),save_path+"/epoch_bias_"+str(i)+".pth")
 
 
