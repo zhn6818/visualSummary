@@ -13,6 +13,8 @@ import time
 from PIL import Image
 os.environ['CUDA_VISIBLE_DEVICES']="1,2,4"
 
+## dfg
+
 '''
 sleep
 '''
