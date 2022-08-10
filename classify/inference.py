@@ -8,6 +8,9 @@ from cls import names
 
 modelPath = '/data1_dev/zhn/dogcat/models/epoch_40.pth'
 
+
+
+
 def main():
     print('cuda device count: ', torch.cuda.device_count())
     

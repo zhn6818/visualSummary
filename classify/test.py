@@ -36,7 +36,6 @@ if __name__ == "__main__":
     # for j, (inputs, labels) in enumerate(train_loader):
     for file in img_list:
         
-        
         filename = file.strip("\n")
         print(filename)
         img = cv2.imread(filename)
