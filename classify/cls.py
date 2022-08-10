@@ -11,7 +11,9 @@ from tqdm import tqdm
 from torchvision import transforms 
 import time
 from PIL import Image
-os.environ['CUDA_VISIBLE_DEVICES']="1,2,4"
+# os.environ['CUDA_VISIBLE_DEVICES']="1,2,4"
+os.environ['CUDA_VISIBLE_DEVICES']="0"
+
 
 ## dfg
 
@@ -38,12 +40,12 @@ eye
 '''
 staff
 '''
-names =  ["A","B", "C", "D", "E", "F", "G", "H","I", "J", "K", "L", "M", "N","O","P", "Q", "R", "S", "T", "U", "V", "W", "X","Y", "Z","0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+names =  ["cats", "dogs"]
 
-img_path = "/data1/zhn/xianghao/CL/train.txt"
-save_path = "/data1/zhn/xianghao/modelzoo/cls_model/20210518/"
-input_h = 32
-input_w = 32
+img_path = "/data1_dev/zhn/dogcat/train/train.txt"
+save_path = "/data1_dev/zhn/dogcat/models/"
+input_h = 96
+input_w = 96
 input_channel = 3
 
 print(img_path)
@@ -118,8 +120,8 @@ if __name__ == "__main__":
             #     torch.cuda.synchronize()
             #     t1 = time.time()
             #print(inputs.shape[0], inputs.shape[1], inputs.shape[2],inputs.shape[3])
-            if inputs.shape[0] != 512:
-                continue
+            # if inputs.shape[0] != 512:
+            #     continue
 
             outputs = model(inputs)
                 # print(outputs.shape)
@@ -134,6 +136,6 @@ if __name__ == "__main__":
         if i%20 == 0:
             optimizer.param_groups[0]['lr']=optimizer.param_groups[0]['lr']*0.2
 
-            torch.save(model.module.state_dict(),save_path+"/epoch_"+str(i)+".pth")
+            torch.save(model.state_dict(),save_path+"/epoch_"+str(i)+".pth")
 
 
