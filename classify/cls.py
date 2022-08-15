@@ -53,7 +53,7 @@ print(save_path)
 
 nclass = len(names)
 batch_size = 512
-max_epoches = 4
+max_epoches = 2000
 lr = 0.001
 
 
