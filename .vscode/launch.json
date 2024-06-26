@@ -30,6 +30,15 @@
             "console": "integratedTerminal",
             "args": [],
             "justMyCode": true
+        },
+        {
+            "name": "Python: letterTrain",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "letterTrain.py",
+            "console": "integratedTerminal",
+            "args": [],
+            "justMyCode": true
         }
     ]
 }
